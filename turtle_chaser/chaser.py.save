@@ -1,0 +1,37 @@
+
+           10
+       )
+
+
+      self.leader_pose = None
+      self.chaser_pose = None
+
+      self.timer = self.create_timer(0.05, self.control_loop)
+
+
+     def leader_callback(self, msg):
+          self.leader_pose = msg
+
+     def chaser_callback(self, msg):
+         self.chaser_pose = msg
+
+     def control_loop(self):
+         if self.leader_pose is None or self.chaser_pose is None:
+             return
+
+         dx = self.leader_pose.x - self.chaser_pose.x
+         dy = self.leader_pose.y - self.chaser_pose.y
+
+         distance = math.sqrt(dx**2 +dy**2)
+
+         desired_angle 
+             math.sin(angle_error),
+             math.cos(angle_error),
+         )
+
+         msg = Twist()
+
+
+         if distance > 0.5:
+            msg.linear.x = min(1.5, 1.0 * distance)
+            msg.angular.z = 4.0 * angle       node.destroy_
